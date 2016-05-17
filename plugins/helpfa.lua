@@ -61,7 +61,7 @@ end
 
 return {
   description = " bot help", 
-  usage = "help",
+  usage = "ابزارها",
   patterns = {
     "^(ابزارها)$"
   }, 
