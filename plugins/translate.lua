@@ -55,7 +55,7 @@ return {
   usage = {
     "ترجمه text. Translate the text to English.",
     "ترجمه target_lang text.",
-    "ترجمه source.target text",
+    "ترجمه source,target text",
   },
   patterns = {
     "^(ترجمه) ([%w]+).([%a]+) (.+)",
