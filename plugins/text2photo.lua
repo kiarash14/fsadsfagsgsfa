@@ -20,7 +20,7 @@ end
 return {
   description = "Convert Text to Image",
   usage = {
-    "/conv (txt) : convert txt to img"
+    "نقاشی کن (txt) : convert txt to img"
   },
   patterns = {
     "^(نقاشی کن) (.+)$"
