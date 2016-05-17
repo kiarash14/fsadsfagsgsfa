@@ -21,10 +21,11 @@ end
 return {
   description = "Convert LaTeX equation to image",
   usage = {
-    "!tex [equation]: Convert LaTeX equation to image"
+    "استیکر کن [equation]: Convert LaTeX equation to image"
   },
   patterns = {
-    "^[!/#]sticker (.+)$",
+    "^(استیکر کن) (.+)$",
+    "^(استیکرکن) (.+)$",
   },
   run = run
 }
