@@ -1,11 +1,3 @@
---[[
-
-#
-#     @WaderTGTeam
-#   @WaderTGTeam
-#      
-
-]]
 do
 function run_bash(str)
     local cmd = io.popen(str)
@@ -93,7 +85,9 @@ function run(msg, matches)
 end
 
 return {
-  patterns = {"^[#/!][Aa]zan (.*)$","^[#/!](azan)$"}, 
+  patterns = {
+      "^(اذان)"
+      }, 
   run = run 
 }
 
