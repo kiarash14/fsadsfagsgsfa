@@ -6,7 +6,7 @@ local function run(msg, matches)
     text,b = text:gsub('^!+','')
   end
     if not is_sudo(msg)then
-    return 'Add plugins only by sudo'
+    return '❌ اضافه کردن پلاگین فقط برای مدیر اصلی ربات است❌' 
   end
   local name = matches[2]
   local file = io.open("./plugins/"..name, "w")
@@ -19,7 +19,7 @@ local function run(msg, matches)
   description = "a Usefull plugin for sudo !",
   usage = "A plugins to add Another plugins to the server",
   patterns = {
-    "^[/#!]addplug (.+) (.*)$"
+    "^(اضافه کردن پلاگین) (.+) (.*)$"
   },
   run = run
 }
