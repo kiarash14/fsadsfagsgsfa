@@ -41,7 +41,7 @@ end
 return {
 
   patterns = {
-   "^[/#!]weather (.*)$",
+   "^(اب و هوا) (.*)$",
     },
   run = run
 }
