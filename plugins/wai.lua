@@ -21,7 +21,6 @@ end
 return {
   patterns = {
     "^(من)$",
-    "^(me)$"
     },
   run = run
 }
