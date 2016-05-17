@@ -1,7 +1,7 @@
 do
 
 local function run(msg, matches)
-  if matches[1] == 'wai' then
+  if matches[1] == 'من' then
     if is_sudo(msg) then
      --send_document(get_receiver(msg), "/home/Seed/axs/sudo.webp", ok_cb, false)
       return "😍 بابا بیا بغلم 😍"
@@ -21,7 +21,7 @@ end
 return {
   patterns = {
     "^(من)$",
-     "^(me)$"
+    "^(me)$"
     },
   run = run
 }
