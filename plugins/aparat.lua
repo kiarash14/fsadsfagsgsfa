@@ -17,14 +17,14 @@ local function run(msg, matches)
   for i = 1, #items do
   text = text..'\n'..i..'- '..items[i].title..'  -  تعداد بازدید: '..items[i].visit_cnt..'\n    لینک: aparat.com/v/'..items[i].uid
   end
-  text = text..'\n\n@WaderTGTeam'
+  text = text..'\n\n@SpamGuardCH'
   return text
  end
 end
 
 return {
    patterns = {
-"^[#/!](aparat) (.*)$",
+"^(اپارات) (.*)$",
    },
    run = run
 }
