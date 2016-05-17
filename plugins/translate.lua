@@ -58,13 +58,11 @@ return {
     "[/!]tr source.target text",
   },
   patterns = {
-    "^[#/!]tr ([%w]+).([%a]+) (.+)",
-    "^[#/!]tr ([%w]+) (.+)",
-    "^[#/!]tr (.+)",
+    "^(ترجمه) ([%w]+).([%a]+) (.+)",
+    "^(ترجمه) ([%w]+) (.+)",
+    "^(ترجمه) (.+)",
   }, 
   run = run 
 }
 
 end
---@WaderTGTeam
---@WaderTGTeam
