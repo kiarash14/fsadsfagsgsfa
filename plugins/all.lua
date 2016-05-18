@@ -22,7 +22,7 @@ local function chat_stats(chat_id)
         return a.msgs > b.msgs
       end
     end)
-  local text = 'Chat stats:\n'
+  local text = 'امار گروه:\n'
   for k,user in pairs(users_info) do
     text = text..user.name..' = '..user.msgs..'\n'
   end
@@ -33,7 +33,7 @@ local function get_group_type(target)
   local data = load_data(_config.moderation.data)
   local group_type = data[tostring(target)]['group_type']
     if not group_type or group_type == nil then
-       return 'No group type available.\nUse /type in the group to set type.'
+       return 'مدل گروه نامشخص'
     end
     return group_type
 end
@@ -42,7 +42,7 @@ local function get_description(target)
   local data = load_data(_config.moderation.data)
   local data_cat = 'description'
   if not data[tostring(target)][data_cat] then
-    return 'No description available.'
+    return 'درباره ای پیدا نشد'
   end
   local about = data[tostring(target)][data_cat]
   return about
@@ -52,7 +52,7 @@ local function get_rules(target)
   local data = load_data(_config.moderation.data)
   local data_cat = 'rules'
   if not data[tostring(target)][data_cat] then
-    return 'No rules available.'
+    return 'قوانینی وجود ندارد'
   end
   local rules = data[tostring(target)][data_cat]
   return rules
@@ -63,13 +63,13 @@ local function modlist(target)
   local data = load_data(_config.moderation.data)
   local groups = 'groups'
   if not data[tostring(groups)] or not data[tostring(groups)][tostring(target)] then
-    return 'Group is not added or is Realm.'
+    return 'گروه اضافه نشده است یا رلیم است'
   end
   if next(data[tostring(target)]['moderators']) == nil then
-    return 'No moderator in this group.'
+    return 'مدیری وجود ندارد'
   end
   local i = 1
-  local message = '\nList of moderators :\n'
+  local message = '\nلیست مدیران :\n'
   for k,v in pairs(data[tostring(target)]['moderators']) do
     message = message ..i..' - @'..v..' [' ..k.. '] \n'
     i = i + 1
@@ -81,19 +81,15 @@ local function get_link(target)
   local data = load_data(_config.moderation.data)
   local group_link = data[tostring(target)]['settings']['set_link']
   if not group_link or group_link == nil then 
-    return "No link"
+    return "لینکی وجود ندارد"
   end
-  return "Group link:\n"..group_link
+  return "لینک:\n"..group_link
 end
 
 local function all(msg,target,receiver)
-  local data = load_data(_config.moderation.data)
-  if not data[tostring(target)] then
-    return
-  end
   local text = "All the things I know about this group\n\n"
   local group_type = get_group_type(target)
-  text = text.."Group Type: \n"..group_type
+  text = text.."مدل گروه: \n"..group_type
   if group_type == "Group" or group_type == "Realm" then
 	local settings = show_group_settingsmod(msg,target)
 	text = text.."\n\n"..settings
@@ -102,13 +98,13 @@ local function all(msg,target,receiver)
 	text = text..'\n\n'..settings
   end
   local rules = get_rules(target)
-  text = text.."\n\nRules: \n"..rules
+  text = text.."\n\nقوانین: \n"..rules
   local description = get_description(target)
-  text = text.."\n\nAbout: \n"..description
+  text = text.."\n\nدرباره: \n"..description
   local modlist = modlist(target)
-  text = text.."\n\nMods: \n"..modlist
+  text = text.."\n\nمدیران: \n"..modlist
   local link = get_link(target)
-  text = text.."\n\nLink: \n"..link
+  text = text.."\n\nلینک: \n"..link
   local stats = chat_stats(target)
   text = text.."\n\n"..stats
   local mutes_list = mutes_list(target)
@@ -126,7 +122,7 @@ local function all(msg,target,receiver)
 end
 
 local function run(msg, matches)
-  if matches[1] == "all" and matches[2] and is_owner2(msg.from.id, matches[2]) then
+  if matches[1] == "امار" and matches[2] and is_owner2(msg.from.id, matches[2]) then
     local receiver = get_receiver(msg)
     local target = matches[2]
     return all(msg,target,receiver)
@@ -134,7 +130,7 @@ local function run(msg, matches)
   if not is_owner(msg) then
     return
   end
-  if matches[1] == "all" and not matches[2] then
+  if matches[1] == "امار" and not matches[2] then
     local receiver = get_receiver(msg)
     return all(msg,msg.to.id,receiver)
   end
